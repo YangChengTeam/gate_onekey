@@ -31,7 +31,7 @@
             - 选择：8
             - 其它默认
 
-### 运行pulsar服务
+### 2. 运行pulsar服务
   - sh pm2_pulsar.sh
     - 稍等几分钟puslar、puslar_manager启动
   - sh pulsar_manager_create_account.sh && sh pulsar_create_tenants_topics.sh
