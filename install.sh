@@ -129,6 +129,8 @@ install_pulsar(){
 }
 
 install_softs(){
+   install_wget
+   install_unzip
    install_java
    install_node
    install_lnmp
