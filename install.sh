@@ -7,6 +7,8 @@
 #=================================================================#
 root=/opt
 
+
+
 # Check command is exist
 check_command(){
     local command=$1 
@@ -18,7 +20,7 @@ check_command(){
 }
 
 install_wget(){
-    if check_command java; then
+    if check_command wget; then
         echo "wget  installing..."
         yum -y install wget
     else
