@@ -7,8 +7,6 @@
 #=================================================================#
 root=/opt
 
-
-
 # Check command is exist
 check_command(){
     local command=$1 
@@ -88,7 +86,6 @@ install_lnmp(){
     # conf
     cd $root 
     if ! check_command mysql; then
-        mysql -u root -e "source yf_gateway.sql"
         mysql -u root -p123456 -e "source yf_gateway.sql"
     fi
     if [[ -e /usr/local/redis/etc/redis.conf ]];then
@@ -109,6 +106,15 @@ install_pulsar(){
     fi
 
     cd apache-pulsar-2.10.0
+    
+    if [[ ! -e /opt/my-secret.key ]];then
+        bin/pulsar tokens create-secret-key --output /opt/my-secret.key
+    fi
+
+    if [[ ! -e /opt/client.token ]];then
+        bin/pulsar tokens create --secret-key file:///opt/my-secret.key --subject client >> /opt/client.token
+    fi
+
     yes|cp -f $root/standalone.conf conf/standalone.conf
     yes|cp -f $root/functions_worker.yml conf/functions_worker.yml
     yes|cp -f $root/client.conf conf/client.conf

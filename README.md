@@ -5,16 +5,11 @@
 ### 1. 安装步骤
 
 - git 安装
-    - 查看git是否已安装
-      - 执行 **git**
-       - 如未安装
-         - 执行 **yum -y install git**
-    - 执行 **git clone https://gitee.com/mzpbvsig/gate_onekey**
-    - 执行 **cd  gate_onekey && yum install git-lfs-3.2.0-1.el7.x86_64.rpm**
-    - 执行 **mv \*.\* /opt && cd /opt**
-    - 执行 **sh install.sh**
+    - 安装git-lfs
+      - [下载git-lfs-3.2.0-1.el7.x86_64.rpm](git-lfs-3.2.0-1.el7.x86_64.rpm)
+      -  **yum install -y git && yum -y install git-lfs**
+    - 执行 **git-lfs clone https://github.com/YangChengTeam/gate_onekey && cd  gate_onekey && mv \*.\* /opt && cd /opt && sh install.sh**
     - 命令完成后  再次执行**sh install.sh**检测环境是否安装成功
-
 - zip安装
     - 查看unzip是否已安装
        - 执行 **unzip**
