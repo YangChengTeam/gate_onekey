@@ -17,6 +17,15 @@ check_command(){
     fi
 }
 
+install_wget(){
+    if check_command java; then
+        echo "wget  installing..."
+        yum -y install wget
+    else
+        echo "wget installed"
+    fi
+}
+
 install_java(){
     if check_command java; then
         echo "java  installing..."
@@ -36,7 +45,7 @@ install_node(){
     fi
 
     if check_command pm2; then
-        npm install -g pm2
+        npm install -g pm2 --registry=https://registry.npmmirror.com
      else
        echo "pm2 installed"
     fi
