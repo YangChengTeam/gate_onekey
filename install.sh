@@ -71,18 +71,24 @@ install_lnmp(){
         tar zxf lnmp1.9.tar.gz 
     fi 
     cd lnmp1.9
+    # mysql select 2
     # mysql passwrod set 123456
-    if check_command php then
+    # php select 8
+    if check_command php; then
        ./install.sh lnmp
+    else 
+       echo "lnmp installed"
     fi  
     if check_command redis-cli; then
         ./addons.sh install redis
+        ln /usr/local/redis/bin/redis-cli /usr/bin/redis-cli
     else
        echo "redis installed"
     fi
     # conf
     cd $root 
     if ! check_command mysql; then
+        mysql -u root -e "source yf_gateway.sql"
         mysql -u root -p123456 -e "source yf_gateway.sql"
     fi
     if [[ -e /usr/local/redis/etc/redis.conf ]];then

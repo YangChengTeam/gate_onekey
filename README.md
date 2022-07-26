@@ -24,3 +24,15 @@
     - 执行 **cd  gate_onekey && mv \*.\* /opt && cd /opt**
     - 执行 **sh install.sh**
     - 命令完成后  再次执行**sh install.sh**检测环境是否安装成功
+
+
+- q&a
+    - lnmp 选项
+        - mysql
+            - 选择：2
+            - 密码: 123456
+            - 其它默认
+        - php
+            - 选择：8
+            - 其它默认
+        
