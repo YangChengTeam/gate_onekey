@@ -72,21 +72,9 @@ install_lnmp(){
     fi 
     cd lnmp1.9
     # mysql passwrod set 123456
-    if check_command nginx;then
-       ./install.sh nginx
-    else
-       echo "nginx installed"
+    if check_command php then
+       ./install.sh lnmp
     fi  
-    if check_command mysql; then
-        ./install.sh mysql
-    else
-       echo "mysql installed"
-    fi
-    if check_command php; then
-        ./install.sh php
-    else
-       echo "php installed"
-    fi
     if check_command redis-cli; then
         ./addons.sh install redis
     else
