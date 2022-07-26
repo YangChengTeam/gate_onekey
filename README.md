@@ -35,6 +35,9 @@
   - sh pm2_pulsar.sh
     - 稍等几分钟puslar、puslar_manager启动
   - sh pulsar_manager_create_account.sh && sh pulsar_create_tenants_topics.sh
+  - 登录pulsar_manager 
+     - 浏览器：http://{ip}:7750/ui/index.html
+     - 帐号/密码： admin/admin
   - 查看日志
     - pm2 log
         
