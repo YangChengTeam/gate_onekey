@@ -81,7 +81,7 @@ install_lnmp(){
     else
        echo "redis installed"
     fi
-# conf
+    # conf
     cd $root 
     if ! check_command mysql; then
         mysql -u root -p123456 -e "source yf_gateway.sql"
@@ -92,26 +92,29 @@ install_lnmp(){
     if [[ -e /etc/redis.conf ]];then
          cp -f $root/redis.conf /etc/redis.conf
     fi
-    cp -f $root/web.conf /usr/local/nginx/conf/vhost/web.conf
+    if [[ -d /usr/local/nginx/conf/vhost/ ]];then
+        cp -f $root/web.conf /usr/local/nginx/conf/vhost/web.conf
+    fi
 }
 
 install_pulsar(){
-cd $root
-if [[ ! -d apache-pulsar-2.10.0 ]];then
-    tar xvfz apache-pulsar-2.10.0-bin.tar.gz
-fi
-cd apache-pulsar-2.10.0
-yes|cp -f $root/standalone.conf conf/standalone.conf
-yes|cp -f $root/functions_worker.yml conf/functions_worker.yml
-yes|cp -f $root/client.conf conf/client.conf
+    cd $root
+    if [[ ! -d apache-pulsar-2.10.0 ]];then
+        tar xvfz apache-pulsar-2.10.0-bin.tar.gz
+    fi
 
-cd $root
-if [[ ! -d pulsar-manager ]];then
-    unzip pulsar-manager.zip
-fi
-cd pulsar-manager/pulsar-manager
-yes|cp -r ../dist ui
-yes|cp -f $root/application.properties application.properties
+    cd apache-pulsar-2.10.0
+    yes|cp -f $root/standalone.conf conf/standalone.conf
+    yes|cp -f $root/functions_worker.yml conf/functions_worker.yml
+    yes|cp -f $root/client.conf conf/client.conf
+
+    cd $root
+    if [[ ! -d pulsar-manager ]];then
+        unzip pulsar-manager.zip
+    fi
+    cd pulsar-manager/pulsar-manager
+    yes|cp -r ../dist ui
+    yes|cp -f $root/application.properties application.properties
 }
 
 install_softs(){
