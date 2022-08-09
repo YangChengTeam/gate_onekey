@@ -5,4 +5,4 @@ curl \
     -H 'Cookie: XSRF-TOKEN=$CSRF_TOKEN;' \
     -H "Content-Type: application/json" \
     -X PUT http://localhost:7750/pulsar-manager/users/superuser \
-    -d '{"name": "admin", "password": "admin", "description": "", "email": ""}'
+    -d '{"name": "admin", "password": "admin123", "description": "", "email": "mzpbvsig@gmail.com"}'

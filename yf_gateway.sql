@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50626
 File Encoding         : 65001
 
-Date: 2022-07-25 15:44:33
+Date: 2022-07-27 10:05:54
 */
 CREATE DATABASE IF NOT EXISTS yf_gateway;
 
@@ -69,7 +69,7 @@ CREATE TABLE `pt_car_owner` (
   `add_time` int(11) DEFAULT '0' COMMENT '添加时间',
   `time_version` int(11) DEFAULT '0' COMMENT '时间版本',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=COMPACT COMMENT='停车场--临时车车主信息表\r\n';
+) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=COMPACT COMMENT='停车场--临时车车主信息表\r\n';
 
 -- ----------------------------
 -- Table structure for pt_gateway_log
@@ -84,7 +84,7 @@ CREATE TABLE `pt_gateway_log` (
   `log_type` varchar(100) DEFAULT '' COMMENT '日志类型 http pulsar_consumer pulsar_producer等',
   `add_time` int(11) DEFAULT '0' COMMENT '添加时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=452234 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=466243 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for pt_nav_camera_led
@@ -198,6 +198,21 @@ CREATE TABLE `pt_parking_detector` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='本地车位和车位探测器绑定关系';
 
 -- ----------------------------
+-- Table structure for pt_parkinglot
+-- ----------------------------
+DROP TABLE IF EXISTS `pt_parkinglot`;
+CREATE TABLE `pt_parkinglot` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `smartpark_id` int(11) NOT NULL DEFAULT '0' COMMENT '园区ID',
+  `name` varchar(50) NOT NULL DEFAULT '' COMMENT '停车场名称',
+  `pid` int(11) NOT NULL DEFAULT '0' COMMENT '上级停车场ID',
+  `is_del` tinyint(4) NOT NULL DEFAULT '0' COMMENT '是否删除',
+  `config` text NOT NULL COMMENT '停车场配置json',
+  `time_version` int(11) NOT NULL DEFAULT '0' COMMENT '时间版本',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=4999 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=COMPACT COMMENT='停车场，注意分大停车场和小停车场，大停车场对应的pid为0';
+
+-- ----------------------------
 -- Table structure for sp_building_member
 -- ----------------------------
 DROP TABLE IF EXISTS `sp_building_member`;
@@ -300,7 +315,7 @@ CREATE TABLE `sp_led_push_log` (
   PRIMARY KEY (`id`) USING BTREE,
   KEY `type` (`led_number`,`request_url`),
   KEY `add_time` (`add_time`)
-) ENGINE=InnoDB AUTO_INCREMENT=275447 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='Led屏推送日志';
+) ENGINE=InnoDB AUTO_INCREMENT=278994 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='Led屏推送日志';
 
 -- ----------------------------
 -- Table structure for st_pit
@@ -362,7 +377,7 @@ CREATE TABLE `st_toilet` (
   `is_del` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否删除',
   `time_version` int(11) DEFAULT '0' COMMENT '时间版本',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=462 DEFAULT CHARSET=utf8mb4 COMMENT='厕所';
+) ENGINE=InnoDB AUTO_INCREMENT=466 DEFAULT CHARSET=utf8mb4 COMMENT='厕所';
 
 -- ----------------------------
 -- Table structure for v_visit
@@ -379,4 +394,4 @@ CREATE TABLE `v_visit` (
   PRIMARY KEY (`id`),
   KEY `idx_visit_start_time` (`visit_start_time`),
   KEY `idx_visit_end_time` (`visit_end_time`)
-) ENGINE=InnoDB AUTO_INCREMENT=488 DEFAULT CHARSET=utf8mb4 COMMENT='访问记录表';
+) ENGINE=InnoDB AUTO_INCREMENT=507 DEFAULT CHARSET=utf8mb4 COMMENT='访问记录表';
