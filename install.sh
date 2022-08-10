@@ -88,14 +88,21 @@ install_lnmp(){
     if ! check_command mysql; then
         mysql -u root -p123456 -e "source yf_gateway.sql"
     fi
+    
+    if [[ -e /usr/local/php/etc/php.ini ]];then
+         yes|cp -f $root/php.ini /usr/local/php/etc/php.ini
+    fi
+    if [[ -e /home/myweb/yf_local_gatewayworker/runtime ]];then
+        chmod -R 777 /home/myweb/yf_local_gatewayworker/runtime
+    fi
     if [[ -e /usr/local/redis/etc/redis.conf ]];then
-         cp -f $root/redis.conf /usr/local/redis/etc/redis.conf
+         yes|cp -f $root/redis.conf /usr/local/redis/etc/redis.conf
     fi
     if [[ -e /etc/redis.conf ]];then
-         cp -f $root/redis.conf /etc/redis.conf
+         yes|cp -f $root/redis.conf /etc/redis.conf
     fi
     if [[ -d /usr/local/nginx/conf/vhost/ ]];then
-        cp -f $root/web.conf /usr/local/nginx/conf/vhost/web.conf
+         yes|cp -f $root/web.conf /usr/local/nginx/conf/vhost/web.conf
     fi
 }
 

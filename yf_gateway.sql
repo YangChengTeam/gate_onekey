@@ -10,18 +10,10 @@ Target Server Type    : MYSQL
 Target Server Version : 50626
 File Encoding         : 65001
 
-Date: 2022-07-27 10:05:54
+Date: 2022-08-09 17:51:18
 */
-CREATE DATABASE IF NOT EXISTS yf_gateway;
-
-/*CREATE USER IF NOT EXISTS 'root'@'%' IDENTIFIED WITH mysql_native_password BY '123456';*/
-CREATE USER 'root'@'%' IDENTIFIED BY '123456';
-GRANT ALL PRIVILEGES ON *.* TO 'root'@'%'; 
-FLUSH PRIVILEGES;
 
 SET FOREIGN_KEY_CHECKS=0;
-use yf_gateway;
-
 
 -- ----------------------------
 -- Table structure for pt_car
@@ -84,7 +76,7 @@ CREATE TABLE `pt_gateway_log` (
   `log_type` varchar(100) DEFAULT '' COMMENT '日志类型 http pulsar_consumer pulsar_producer等',
   `add_time` int(11) DEFAULT '0' COMMENT '添加时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=466243 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=537018 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for pt_nav_camera_led
@@ -100,7 +92,7 @@ CREATE TABLE `pt_nav_camera_led` (
   `is_del` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '是否删除了: 0-否，1-是',
   `time_version` int(11) DEFAULT '0' COMMENT '时间版本',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='导航相机和led显示屏绑定关系';
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COMMENT='导航相机和led显示屏绑定关系';
 
 -- ----------------------------
 -- Table structure for pt_nav_led
@@ -136,7 +128,7 @@ CREATE TABLE `pt_nav_ptag` (
   `time_version` int(11) DEFAULT '0' COMMENT '时间版本',
   `sort` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '排序，优先级，越大优先级越高',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COMMENT='楼宇绑定车位分组绑定关系';
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COMMENT='楼宇绑定车位分组绑定关系';
 
 -- ----------------------------
 -- Table structure for pt_parking
@@ -230,7 +222,7 @@ CREATE TABLE `sp_building_member` (
   `is_del` tinyint(1) DEFAULT '0' COMMENT '是否删除',
   `time_version` int(11) DEFAULT '0' COMMENT '时间版本',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='楼栋成员';
+) ENGINE=InnoDB AUTO_INCREMENT=94 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='楼栋成员';
 
 -- ----------------------------
 -- Table structure for sp_led
@@ -315,7 +307,7 @@ CREATE TABLE `sp_led_push_log` (
   PRIMARY KEY (`id`) USING BTREE,
   KEY `type` (`led_number`,`request_url`),
   KEY `add_time` (`add_time`)
-) ENGINE=InnoDB AUTO_INCREMENT=278994 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='Led屏推送日志';
+) ENGINE=InnoDB AUTO_INCREMENT=288949 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='Led屏推送日志';
 
 -- ----------------------------
 -- Table structure for st_pit
@@ -363,7 +355,7 @@ CREATE TABLE `st_pit_log` (
   KEY `name` (`toilet_id`) USING BTREE,
   KEY `pit_id` (`pit_id`) USING BTREE,
   KEY `smartpark_id` (`smartpark_id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=COMPACT COMMENT='坑位日志';
+) ENGINE=InnoDB AUTO_INCREMENT=8443 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=COMPACT COMMENT='坑位日志';
 
 -- ----------------------------
 -- Table structure for st_toilet
@@ -377,7 +369,7 @@ CREATE TABLE `st_toilet` (
   `is_del` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否删除',
   `time_version` int(11) DEFAULT '0' COMMENT '时间版本',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=466 DEFAULT CHARSET=utf8mb4 COMMENT='厕所';
+) ENGINE=InnoDB AUTO_INCREMENT=475 DEFAULT CHARSET=utf8mb4 COMMENT='厕所';
 
 -- ----------------------------
 -- Table structure for v_visit
